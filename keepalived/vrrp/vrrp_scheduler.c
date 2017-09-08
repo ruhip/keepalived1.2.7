@@ -879,6 +879,10 @@ vrrp_dispatcher_read(sock_t * sock)
 	/* Searching for matching instance */
 	vrrp = vrrp_index_lookup(hd->vrid, sock->fd_in);
 
+        if( global_data->standalone_mode == 1 ) {
+              //log_message(LOG_INFO,"global_data->standalone_mode == 1,retrun fd_in");
+              return sock->fd_in;
+        }
 	/* If no instance found => ignore the advert */
 	if (!vrrp)
 		return sock->fd_in;

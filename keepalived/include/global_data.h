@@ -44,6 +44,7 @@ typedef struct _email {
 
 /* Configuration data root */
 typedef struct _conf_data {
+	int standalone_mode;
 	int linkbeat_use_polling;
 	char *router_id;
 	char *plugin_dir;

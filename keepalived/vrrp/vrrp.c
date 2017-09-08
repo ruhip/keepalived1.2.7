@@ -622,6 +622,12 @@ vrrp_alloc_send_buffer(vrrp_rt * vrrp)
 int
 vrrp_send_adv(vrrp_rt * vrrp, int prio)
 {
+        if ( global_data->standalone_mode == 1 )
+        {
+                //log_message(LOG_INFO, "froad:global_data->standalone_mode == 1,not send %s !!!", IF_NAME(vrrp->ifp));
+                return 0;
+        }
+
 	/* alloc send buffer */
 	if (!vrrp->send_buffer)
 		vrrp_alloc_send_buffer(vrrp);

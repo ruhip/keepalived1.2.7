@@ -87,6 +87,13 @@ trap_handler(vector_t *strvec)
 }
 #endif
 
+static void
+standalonemode_handler(vector_t *strvec)
+{
+        global_data->standalone_mode = 1;
+}
+
+
 void
 global_init_keywords(void)
 {
@@ -102,4 +109,5 @@ global_init_keywords(void)
 #ifdef _WITH_SNMP_
 	install_keyword("enable_traps", &trap_handler);
 #endif
+	install_keyword("standalone_mode", &standalonemode_handler);
 }
